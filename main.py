@@ -78,7 +78,7 @@ async def on_message(message):
 
 # ================= RUN BOT =================
 
-token = os.getenv("MTQ5MzQ4Mjg4NzkzNTQyNjY1MA.GoLSF8.p1z9KUysxtISbj_fcKJQGjtT4pzKp5hHF4nHJw")
+token = os.getenv("TOKEN")
 
 if token is None:
     print("ERROR: TOKEN not found in environment variables")
