@@ -36,6 +36,7 @@ async def on_message(message):
     if user_id not in data:
         data[user_id] = {"xp": 0, "level": 0}
 
+    # Give XP
     xp_gain = random.randint(5, 15)
     data[user_id]["xp"] += xp_gain
 
@@ -43,6 +44,7 @@ async def on_message(message):
     level = data[user_id]["level"]
     new_level = get_level(xp)
 
+    # Level up
     if new_level > level:
         data[user_id]["level"] = new_level
         await message.channel.send(
@@ -50,6 +52,8 @@ async def on_message(message):
         )
 
     save_data()
+
+    # ================= COMMANDS =================
 
     # Rank
     if message.content == "!rank":
@@ -72,5 +76,11 @@ async def on_message(message):
 
         await message.channel.send(text)
 
-# IMPORTANT (token from environment)
-client.run(os.getenv("MTQ5MzQ4Mjg4NzkzNTQyNjY1MA.G9MptM.5sBMkagzM861KN6hzlNaanbCojfZwJXK2bsKLc"))
+# ================= RUN BOT =================
+
+token = os.getenv("MTQ5MzQ4Mjg4NzkzNTQyNjY1MA.GoLSF8.p1z9KUysxtISbj_fcKJQGjtT4pzKp5hHF4nHJw")
+
+if token is None:
+    print("ERROR: TOKEN not found in environment variables")
+else:
+    client.run(token)
